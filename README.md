@@ -37,3 +37,28 @@ git add .
 git commit -m "describe your change in quotes"
 git push -u origin main
 ```
+
+### 3.2 Updated All Dependencies and Ran Tests
+
+Used the following code to run tests on file 
+```
+uv sync --extra dev --extra docs --upgrade
+uv cache clean
+git add .
+uvx ruff check --fix
+uvx pre-commit autoupdate
+uv run pre-commit run --all-files
+git add .
+uv run pytest
+```
+
+Built documents, fixed errors, and tested them locally using the following code 
+
+uv sync --extra docs --upgrade
+uv run mkdocs build --strict
+uv run mkdocs serve
+
+
+### 3.3 Confirm Interpreter 
+
+Confirmed I populated .venv as my vs code interpreter 
